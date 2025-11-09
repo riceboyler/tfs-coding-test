@@ -1,0 +1,51 @@
+@layer reset, base, tokens, recipes, utilities;
+
+:root {
+  --white: #ffffff;
+  --dark-blue: #052444;
+  --light-blue: #4285f4;
+  --font-manrope: Manrope, sans-serif;
+  --black: #1b1b1b;
+  --link-blue: #266dd3;
+  --link-blue-hover: #1b4c94;
+  --light-slate: #d3d6df;
+  --gray-ebebeb: #ebebeb;
+  --gray-767676: #767676;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-manrope);
+  font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 56px;
+  line-height: 60px;
+}
+
+h2 {
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: -0.72px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--link-blue);
+}
+
+a:hover {
+  color: var(--link-blue-hover);
+  text-decoration: underline;
+}
