@@ -1,0 +1,23 @@
+<template>
+  <Box
+    :width="{ base: '0%', md: '415px' }"
+    :display="{ base: 'none', md: 'block' }"
+    minHeight="100vh"
+    px="16px"
+    py="24px"
+    :background="
+      isLogin
+        ? 'linear-gradient(139deg, var(--dark-blue), var(--light-blue) 88.24%)'
+        : 'var(--dark-blue)'
+    "
+  >
+    <slot />
+  </Box>
+</template>
+
+<script lang="ts" setup>
+  import { Box } from "styled-system/jsx";
+  defineProps({ isLogin: { type: Boolean, required: false, default: false } });
+</script>
+
+<style></style>
