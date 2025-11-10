@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: "2025-07-15",
   css: ["@/assets/css/global.css"],
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   eslint: {
     config: {
       stylistic: {
@@ -34,6 +34,7 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxt/fonts",
     "@nuxt/eslint",
+    "@nuxt/icon",
   ],
 
   postcss: {

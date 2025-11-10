@@ -17,7 +17,6 @@
         mt="16px"
         alignItems="flex-start"
       >
-        {{ isValid }}
         <Box
           v-if="!isValid"
           as="ul"
@@ -28,7 +27,6 @@
           listStylePosition="inside"
           borderRadius="10px"
         >
-          {{ errors }}
           There were some errors:
           <li
             v-for="error in errors"
@@ -42,15 +40,13 @@
           fieldName="username"
           labelText="Username"
         />
-        {{ username }}
         <FormInputWithLabel
           v-model="password"
           fieldName="password"
           labelText="Password"
           inputType="password"
         />
-        {{ password }}
-        <PrimaryButton
+        <ButtonsPrimary
           type="submit"
           text="Continue"
           @action="handleSubmit"
@@ -66,20 +62,22 @@
   const router = useRouter();
   const username = ref("");
   const password = ref("");
-  const errors: string[] = [];
-  let isValid = true;
+  const errors = ref<string[]>([]);
+  const touched = ref(false);
+  const isValid = computed(() =>
+    touched.value ? username.value !== "" && password.value !== "" : true,
+  );
 
   function handleSubmit() {
-    console.log("Called handleSubmit");
-    errors.length = 0;
+    touched.value = true;
+    errors.value.length = 0;
     if (username.value === "") {
-      errors.push("Username is required");
+      errors.value.push("Username is required");
     }
     if (password.value === "") {
-      errors.push("Password is required");
+      errors.value.push("Password is required");
     }
-    isValid = username.value !== "" && password.value !== "";
-    if (isValid) {
+    if (isValid.value) {
       username.value = "";
       password.value = "";
       router.push("/");

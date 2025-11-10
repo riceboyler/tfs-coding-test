@@ -6,12 +6,10 @@
     background="linear-gradient(139deg, var(--dark-blue), var(--light-blue) 88.24%)"
   >
     <Box
-      as="h1"
-      color="var(--white)"
       pt="52px"
       pl="49px"
     >
-      Welcome Back
+      <TypographyH1 color="var(--white)">Welcome Back</TypographyH1>
     </Box>
     <Box
       background="url('./images/aw-logo-transparent.png') no-repeat"

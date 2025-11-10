@@ -40,7 +40,7 @@
     placeholder: { type: String, required: false },
   });
 
-  const inputModel = defineModel<string>("input");
+  const inputModel = defineModel<string>();
 </script>
 
 <style></style>

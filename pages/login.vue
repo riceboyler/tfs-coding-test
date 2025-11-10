@@ -9,7 +9,7 @@
       height="48px"
       src="./images/aw-logo-black-small.png"
     />
-    <Box as="h2"> Sign in to ArtistWorks </Box>
+    <TypographyH2>Sign in to ArtistWorks</TypographyH2>
     <LoginForm />
     <VStack
       mt="16px"
@@ -18,15 +18,15 @@
     >
       <TextWithLines>Or sign in with</TextWithLines>
       <HStack gap="16px">
-        <OauthButton provider="google" />
-        <OauthButton provider="apple" />
+        <ButtonsOauth provider="google" />
+        <ButtonsOauth provider="apple" />
       </HStack>
     </VStack>
   </VStack>
 </template>
 
 <script lang="ts" setup>
-  import { Box, VStack, HStack } from "styled-system/jsx";
+  import { VStack, HStack } from "styled-system/jsx";
 
   definePageMeta({ layout: "login" });
 </script>

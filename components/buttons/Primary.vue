@@ -11,6 +11,8 @@
     minHeight="52px"
     cursor="pointer"
     :type="type ?? 'button'"
+    :_hover="{ backgroundColor: 'var(--link-blue)' }"
+    transition="all 500ms"
     @click.prevent="$emit('action')"
   >
     {{ text }}
