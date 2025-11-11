@@ -42,7 +42,12 @@
         </VStack>
       </VStack>
     </Sidebar>
-    <Box marginLeft="233px">
+    <Box
+      mt="64px"
+      ml="233px"
+      pl="64px"
+      pr="44px"
+    >
       <slot />
     </Box>
   </Flex>

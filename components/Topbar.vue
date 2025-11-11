@@ -8,11 +8,14 @@
       <Search />
       <ButtonsIconic icon="mynaui:inbox" />
       <ButtonsPrimary
-        width="123px"
+        width="180px"
         height="42px"
       >
         <div class="button-flex">
-          <Icon name="ri:arrow-up-circle-line" />
+          <Icon
+            name="ri:arrow-up-circle-line"
+            size="24px"
+          />
           Submit Video
         </div>
       </ButtonsPrimary>
@@ -36,6 +39,7 @@
     top: 0;
     background-color: var(--white);
     z-index: 10;
+    margin-left: -64px;
 
     .left {
       display: flex;
@@ -68,6 +72,7 @@
       gap: 24px;
 
       .button-flex {
+        width: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
