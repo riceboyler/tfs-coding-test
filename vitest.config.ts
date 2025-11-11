@@ -7,11 +7,13 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     globals: true,
+    setupFiles: ['./vitest.setup.ts'],
   },
   resolve: {
     alias: {
       '@': resolve(__dirname, './'),
       'styled-system': resolve(__dirname, './styled-system'),
+      '#components': resolve(__dirname, './components'),
     },
   },
 })

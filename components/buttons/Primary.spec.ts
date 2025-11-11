@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { mockStyledSystemForButtons, BUTTON_TYPES, BUTTON_TEXT } from './test-utils';
+import { mockStyledSystemForButtons, BUTTON_TYPES, BUTTON_TEXT } from '../test-utils';
 
 // Mock styled-system components before importing Primary
 mockStyledSystemForButtons();
@@ -31,71 +31,69 @@ describe('Primary.vue', () => {
     });
   });
 
-  describe('Text Prop', () => {
-    it('should display default text "Continue" when no text prop provided', () => {
-      const wrapper = mount(Primary);
+  describe('Slot Content', () => {
+    it('should render slot content when provided', () => {
+      const wrapper = mount(Primary, {
+        slots: {
+          default: BUTTON_TEXT.default
+        }
+      });
 
       expect(wrapper.text()).toBe(BUTTON_TEXT.default);
     });
 
-    it('should display custom text when text prop is provided', () => {
+    it('should display custom text in slot', () => {
       const wrapper = mount(Primary, {
-        props: {
-          text: BUTTON_TEXT.custom
+        slots: {
+          default: BUTTON_TEXT.custom
         }
       });
 
       expect(wrapper.text()).toBe(BUTTON_TEXT.custom);
     });
 
-    it('should update text when prop changes', async () => {
-      const wrapper = mount(Primary, {
-        props: {
-          text: BUTTON_TEXT.custom
-        }
-      });
+    it('should render when slot is empty', () => {
+      const wrapper = mount(Primary);
 
-      expect(wrapper.text()).toBe(BUTTON_TEXT.custom);
-
-      await wrapper.setProps({ text: BUTTON_TEXT.short });
-
-      expect(wrapper.text()).toBe(BUTTON_TEXT.short);
+      const button = wrapper.find('button');
+      expect(button.exists()).toBe(true);
+      expect(wrapper.text()).toBe('');
     });
 
-    it('should handle empty string as text', () => {
+    it('should handle empty string in slot', () => {
       const wrapper = mount(Primary, {
-        props: {
-          text: BUTTON_TEXT.empty
+        slots: {
+          default: BUTTON_TEXT.empty
         }
       });
 
       expect(wrapper.text()).toBe(BUTTON_TEXT.empty);
     });
 
-    it('should handle long text', () => {
+    it('should handle long text in slot', () => {
       const wrapper = mount(Primary, {
-        props: {
-          text: BUTTON_TEXT.long
+        slots: {
+          default: BUTTON_TEXT.long
         }
       });
 
       expect(wrapper.text()).toBe(BUTTON_TEXT.long);
     });
 
-    it('should handle special characters in text', () => {
+    it('should handle special characters in slot', () => {
       const wrapper = mount(Primary, {
-        props: {
-          text: BUTTON_TEXT.special
+        slots: {
+          default: BUTTON_TEXT.special
         }
       });
 
       expect(wrapper.text()).toBe(BUTTON_TEXT.special);
     });
 
-    it('should handle unicode characters in text', () => {
+    it('should handle unicode characters in slot', () => {
       const wrapper = mount(Primary, {
-        props: {
-          text: BUTTON_TEXT.unicode
+        slots: {
+          default: BUTTON_TEXT.unicode
         }
       });
 
@@ -219,11 +217,13 @@ describe('Primary.vue', () => {
   });
 
   describe('Props Combination', () => {
-    it('should handle both text and type props together', () => {
+    it('should handle both slot content and type props together', () => {
       const wrapper = mount(Primary, {
         props: {
-          text: BUTTON_TEXT.custom,
           type: BUTTON_TYPES.submit
+        },
+        slots: {
+          default: BUTTON_TEXT.custom
         }
       });
 
@@ -231,11 +231,13 @@ describe('Primary.vue', () => {
       expect(wrapper.find('button').attributes('type')).toBe(BUTTON_TYPES.submit);
     });
 
-    it('should emit action with custom text and submit type', async () => {
+    it('should emit action with custom slot content and submit type', async () => {
       const wrapper = mount(Primary, {
         props: {
-          text: BUTTON_TEXT.custom,
           type: BUTTON_TYPES.submit
+        },
+        slots: {
+          default: BUTTON_TEXT.custom
         }
       });
 
@@ -267,15 +269,17 @@ describe('Primary.vue', () => {
     it('should maintain functionality after prop updates', async () => {
       const wrapper = mount(Primary, {
         props: {
-          text: BUTTON_TEXT.custom,
           type: BUTTON_TYPES.button
+        },
+        slots: {
+          default: BUTTON_TEXT.custom
         }
       });
 
       await wrapper.find('button').trigger('click');
       expect(wrapper.emitted('action')).toHaveLength(1);
 
-      await wrapper.setProps({ text: BUTTON_TEXT.short, type: BUTTON_TYPES.submit });
+      await wrapper.setProps({ type: BUTTON_TYPES.submit });
 
       await wrapper.find('button').trigger('click');
       expect(wrapper.emitted('action')).toHaveLength(2);
@@ -291,8 +295,10 @@ describe('Primary.vue', () => {
       expect(() => {
         mount(Primary, {
           props: {
-            text: BUTTON_TEXT.custom,
             type: BUTTON_TYPES.submit
+          },
+          slots: {
+            default: BUTTON_TEXT.custom
           }
         });
       }).not.toThrow();
@@ -309,8 +315,8 @@ describe('Primary.vue', () => {
 
     it('should contain only text content (no nested elements)', () => {
       const wrapper = mount(Primary, {
-        props: {
-          text: BUTTON_TEXT.custom
+        slots: {
+          default: BUTTON_TEXT.custom
         }
       });
 
@@ -340,8 +346,8 @@ describe('Primary.vue', () => {
 
     it('should display visible text for screen readers', () => {
       const wrapper = mount(Primary, {
-        props: {
-          text: BUTTON_TEXT.custom
+        slots: {
+          default: BUTTON_TEXT.custom
         }
       });
 

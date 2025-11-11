@@ -1,27 +1,32 @@
 <template>
   <NuxtLink
-    :href="item?.href"
+    :href="itemHref"
     class="sidebar-link"
   >
     <div class="flex-wrapper">
       <Icon
         class="icon"
-        :name="item?.icon ?? ''"
-        font-weight="bold"
+        :name="iconName"
       />
       <div class="link-text">
-        {{ item?.text }}
+        {{ itemText }}
       </div>
     </div>
   </NuxtLink>
 </template>
 
 <script lang="ts" setup>
+  import type { PropType } from 'vue';
+  import { computed } from 'vue';
   import type { NavItem } from "../layouts/default.vue";
 
-  defineProps({
+  const props = defineProps({
     item: Object as PropType<NavItem>,
   });
+
+  const iconName = computed(() => (props.item && props.item.icon) || '');
+  const itemText = computed(() => props.item && props.item.text);
+  const itemHref = computed(() => props.item && props.item.href);
 </script>
 
 <style scoped>

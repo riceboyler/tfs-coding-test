@@ -41,6 +41,8 @@
 </template>
 
 <script lang="ts" setup>
+  import type { PropType } from 'vue';
+
   export type LessonData = {
     lesson: string;
     type: string;

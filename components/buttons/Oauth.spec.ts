@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { mockStyledSystemForButtons, mockIcon, OAUTH_PROVIDERS, OAUTH_DETAILS } from './test-utils'
+import { mockStyledSystemForButtons, mockIcon, OAUTH_PROVIDERS, OAUTH_DETAILS } from '../test-utils'
 
 // Mock styled-system components before importing Oauth
 mockStyledSystemForButtons()
