@@ -33,6 +33,7 @@
     "vue-router": "^4.6.3"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
     "@iconify-json/logos": "^1.2.10",
     "@nuxt/icon": "1.15.0",
     "@pandacss/dev": "^1.4.3",

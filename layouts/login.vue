@@ -7,7 +7,7 @@
     :direction="{ base: 'column', md: 'row' }"
     minHeight="100vh"
   >
-    <SideBar is-login>
+    <Sidebar is-login>
       <Box
         pt="36px"
         pl="25px"
@@ -25,7 +25,7 @@
         bottom="0"
         left="0"
       />
-    </SideBar>
+    </Sidebar>
     <Center
       width="100%"
       minHeight="100vh"

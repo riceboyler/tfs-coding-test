@@ -28,6 +28,7 @@
 
 <script lang="ts" setup>
   import { styled, VStack } from "styled-system/jsx";
+
   type InputType = "text" | "password" | "number";
   defineProps({
     labelText: { type: String, required: true },

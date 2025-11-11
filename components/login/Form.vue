@@ -48,9 +48,10 @@
         />
         <ButtonsPrimary
           type="submit"
-          text="Continue"
           @action="handleSubmit"
-        />
+        >
+          Continue
+        </ButtonsPrimary>
         <StyledLink href="/forgot-password">Forgot password?</StyledLink>
       </VStack>
     </form>
@@ -59,6 +60,7 @@
 
 <script lang="ts" setup>
   import { Box, HStack, VStack } from "styled-system/jsx";
+
   const router = useRouter();
   const username = ref("");
   const password = ref("");
